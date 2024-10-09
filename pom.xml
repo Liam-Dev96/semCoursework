@@ -6,7 +6,7 @@
 
     <groupId>com.napier.semCW</groupId>
     <artifactId>semCW</artifactId>
-    <version>1.0.1.0</version>
+    <version>1.0.1.2</version>
 
     <dependencies>
         <dependency>
