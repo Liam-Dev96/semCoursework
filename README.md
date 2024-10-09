@@ -11,12 +11,12 @@
 ## Code of Conduct  
 Collaborators will -
   <br/>Commit to doing the best work possible
-  Equally share project workload
-  Treat each other with respect
-  Be open to new ideas
-  Communicate effectively when in need of help
-  Continuously test product code
-  Use ethical work practices
-    Refrain from the use of AI
-    No plagiarism of other groups
+  <br/>Equally share project workload
+  <br/>Treat each other with respect
+  <br/>Be open to new ideas
+  <br/>Communicate effectively when in need of help
+  <br/>Continuously test product code
+  <br/>Use ethical work practices
+    <br/>Refrain from the use of AI
+    <br/>No plagiarism of other groups
 
