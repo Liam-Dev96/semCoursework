@@ -10,3 +10,4 @@
 
 # Code of Conduct  
 
+Some fundamental principles include commitment to the profession, adherence to public interest, responsibility to clients and employers, ensuring product quality, integrity in judgments, ethical management practices, and advancing the profession.
