@@ -9,9 +9,9 @@
 ## Develop Build Status: ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Liam-Dev96/semCoursework/main.yml?branch=develop)
 
 ## Code of Conduct  
-# Collaborators will -
-  # Commit to doing the best work possible
-  # Equally share project workload
+Collaborators will -
+  Commit to doing the best work possible
+  Equally share project workload
   Treat each other with respect
   Be open to new ideas
   Communicate effectively when in need of help
