@@ -26,5 +26,6 @@ Collaborators will -
   <br/>Use ethical work practices:
   <br/>
     <br/>Refrain from the use of AI
+    <br/>
     <br/>No plagiarism of other groups
 
