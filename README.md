@@ -11,7 +11,7 @@
 ## Code of Conduct:  
 Collaborators will -
 <br/>
-  <br/>Commit to doing the best work possible
+  <br/> * Commit to doing the best work possible
   <br/>
   <br/>Equally share project workload
   <br/>
