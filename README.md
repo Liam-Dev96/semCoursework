@@ -9,5 +9,14 @@
 ## Develop Build Status: ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Liam-Dev96/semCoursework/main.yml?branch=develop)
 
 ## Code of Conduct  
+# Collaborators will -
+  # Commit to doing the best work possible
+  # Equally share project workload
+  Treat each other with respect
+  Be open to new ideas
+  Communicate effectively when in need of help
+  Continuously test product code
+  Use ethical work practices
+    Refrain from the use of AI
+    No plagiarism of other groups
 
-Some fundamental principles include commitment to the profession, adherence to public interest, responsibility to clients and employers, ensuring product quality, integrity in judgments, ethical management practices, and advancing the profession.
