@@ -23,7 +23,8 @@ Collaborators will -
   <br/>
   <br/>Continuously test product code
   <br/>
-  <br/>Use ethical work practices
+  <br/>Use ethical work practices:
+  <br/>
     <br/>Refrain from the use of AI
     <br/>No plagiarism of other groups
 
