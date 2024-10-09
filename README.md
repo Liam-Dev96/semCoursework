@@ -13,19 +13,19 @@ Collaborators will -
 <br/>
   <br/> * Commit to doing the best work possible
   <br/>
-  <br/>Equally share project workload
+  <br/> * Equally share project workload
   <br/>
-  <br/>Treat each other with respect
+  <br/> * Treat each other with respect
   <br/>
-  <br/>Be open to new ideas
+  <br/> * Be open to new ideas
   <br/>
-  <br/>Communicate effectively when in need of help
+  <br/> * Communicate effectively when in need of help
   <br/>
-  <br/>Continuously test product code
+  <br/> * Continuously test product code
   <br/>
-  <br/>Use ethical work practices:
+  <br/> * Use ethical work practices:
   <br/>
-    <br/>Refrain from the use of AI
+    <br/> * Refrain from the use of AI
     <br/>
-    <br/>No plagiarism of other groups
+    <br/> * No plagiarism of other groups
 
