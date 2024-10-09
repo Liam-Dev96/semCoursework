@@ -10,7 +10,7 @@
 
 ## Code of Conduct  
 Collaborators will -
-  /n Commit to doing the best work possible
+  Commit to doing the best work possible
   Equally share project workload
   Treat each other with respect
   Be open to new ideas
