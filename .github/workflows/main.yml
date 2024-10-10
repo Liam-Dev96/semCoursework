@@ -21,8 +21,8 @@ jobs:
       - name: Build with Maven
         run: mvn package
       - name: Build
-        run: docker build -t sem_CW .
+        run: docker build -t sem_cw .
       - name: Run image
-        run: docker run --network sem-CW --name semcontainer sem_CW
+        run: docker run --network sem-CW --name semcontainer sem_cw
       - name: view logs
         run: docker logs semcontainer
