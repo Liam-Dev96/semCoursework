@@ -64,6 +64,10 @@ public class Main {
 
         // Connect to database
         a.connect();
+
+        // all country file and run sql query
+        CountriesByContinent countryPop = new CountriesByContinent();
+        System.out.println(countryPop.toString());
         // Disconnect from database
         a.disconnect();
 
