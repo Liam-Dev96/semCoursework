@@ -1,0 +1,11 @@
+version: '3'
+services:
+  app:
+    build: .
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: world
+    restart: always
