@@ -1,6 +1,7 @@
 package com.napier.semCW;
 
 import java.sql.*;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -21,14 +22,14 @@ public class Main {
             System.exit(-1);
         }
 
-        int retries = 10;
+        int retries = 100;
         for (int i = 0; i < retries; ++i) {
             System.out.println("Connecting to database...");
             try {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(3000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
@@ -54,20 +55,26 @@ public class Main {
         }
     }
 
+public void getCounCon() throws SQLException {
+        Statement countrycon = con.createStatement();
+        String ccltsQuery = "SELECT * " +
+                            "FROM country";
+        ResultSet rsetcclts = countrycon.executeQuery(ccltsQuery);
+        if (rsetcclts.next()){
+            System.out.println(rsetcclts.getString(1));
+        }
+}
 
 
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException, SQLException {
         // Create new Application
         Main a = new Main();
 
         // Connect to database
         a.connect();
-
-        // call country file and run sql query
-        CountriesByContinent countryPop = new CountriesByContinent();
-        System.out.println(countryPop.toString());
+        TimeUnit.SECONDS.sleep(10);
+        a.getCounCon();
         // Disconnect from database
         a.disconnect();
 
