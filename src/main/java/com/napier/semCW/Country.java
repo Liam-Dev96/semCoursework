@@ -28,10 +28,8 @@ public class Country {
   //country's name of head of state
   public String HeadOfState;
   //country's capital
-  public String Capital;
+  public int Capital;
   //country's alternate code
   public String Code2;
-
-
 
 }

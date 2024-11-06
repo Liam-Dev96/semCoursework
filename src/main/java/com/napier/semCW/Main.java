@@ -55,13 +55,38 @@ public class Main {
         }
     }
 
-public void getCounCon() throws SQLException {
-        Statement countrycon = con.createStatement();
-        String ccltsQuery = "SELECT * " +
-                            "FROM country";
-        ResultSet rsetcclts = countrycon.executeQuery(ccltsQuery);
-        if (rsetcclts.next()){
-            System.out.println(rsetcclts.getString("continent"));
+public Country getCounCon(){
+        try {
+            Statement countrycon = con.createStatement();
+            String ccltsQuery = "SELECT Name, Continent, Region, Population " +
+                    "FROM country" +
+                    "ORDER BY Population DESC";
+            ResultSet rsetcclts = countrycon.executeQuery(ccltsQuery);
+            if (rsetcclts.next()) {
+                Country country = new Country();
+                country.Name = rsetcclts.getString("Name");
+                country.Continent = rsetcclts.getString("Continent");
+                country.Region = rsetcclts.getString("Region");
+                country.Population = rsetcclts.getInt("Population");
+                return country;
+            } else
+                return null;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("failed to get country details");
+            return null;
+        }
+}
+// a method to display data from country database
+public void displayCountry(Country country){
+        if (country != null){
+            System.out.println(
+                    country.Name + " "
+                    + country.Continent + " "
+                    + country.Region + " "
+                    + country.Population + " "
+                    + country.Capital
+            );
         }
 }
 
