@@ -27,7 +27,7 @@ public class Main {
             System.out.println("Connecting to database...");
             try {
                 // Wait a bit for db to start
-                Thread.sleep(3000);
+                Thread.sleep(6000);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://db:3306/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
@@ -61,7 +61,7 @@ public void getCounCon() throws SQLException {
                             "FROM country";
         ResultSet rsetcclts = countrycon.executeQuery(ccltsQuery);
         if (rsetcclts.next()){
-            System.out.println(rsetcclts.getString(1));
+            System.out.println(rsetcclts.getString("continent"));
         }
 }
 
@@ -73,7 +73,7 @@ public void getCounCon() throws SQLException {
 
         // Connect to database
         a.connect();
-        TimeUnit.SECONDS.sleep(10);
+        TimeUnit.SECONDS.sleep(3);
         a.getCounCon();
         // Disconnect from database
         a.disconnect();
