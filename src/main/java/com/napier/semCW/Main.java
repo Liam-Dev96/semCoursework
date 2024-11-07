@@ -88,6 +88,7 @@ public ArrayList<Country> getCounCon(){
         TimeUnit.SECONDS.sleep(3);
         ArrayList<Country> countries = a.getCounCon();  // Now it's a list of countries
 
+        //runs an output to show all countries and continents sorted by population large to small
         if (countries != null && !countries.isEmpty()) {
             for (Country coun : countries) {
                 System.out.println( "--------------------------------------------------------------------------\n" +
