@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
 
+
     /**
      * Connection to MySQL database.
      */
@@ -49,6 +50,7 @@ public class Main {
             try {
                 // Close connection
                 con.close();
+                System.out.println("Connection Closed Successfully");
             } catch (Exception e) {
                 System.out.println("Error closing connection to database");
             }
