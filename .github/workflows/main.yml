@@ -17,6 +17,8 @@ jobs:
           distribution: 'adopt'
       - name: Unit Tests
         run: mvn -Dtest=com.napier.semCW.AppTest test
+      - name: Integration Tests
+        run: mvn -Dtest=com.napier.semCW.AppIntegrationTest test
 
   build:
     name: Build and Start Using docker compose
