@@ -14,7 +14,7 @@ public class Main {
     /**
      * Connect to the MySQL database.
      */
-    public void connect() {
+    public void connect(String location, int delay) {
         try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,19 +23,28 @@ public class Main {
             System.exit(-1);
         }
 
-        int retries = 100;
+        int retries = 10;
+        boolean shouldWait = false;
         for (int i = 0; i < retries; ++i) {
             System.out.println("Connecting to database...");
             try {
-                // Wait a bit for db to start
-                Thread.sleep(6000);
+                if (shouldWait) {
+                    // Wait a bit for db to start
+                    Thread.sleep(delay);
+                }
+
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://" + location
+                                + "/employees?allowPublicKeyRetrieval=true&useSSL=false",
+                        "root", "example");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
                 System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
+
+                // Let's wait before attempting to reconnect
+                shouldWait = true;
             } catch (InterruptedException ie) {
                 System.out.println("Thread interrupted? Should not happen.");
             }
@@ -79,29 +88,37 @@ public ArrayList<Country> getCounCon(){
         }
 }
 
-    public static void main(String[] args) throws InterruptedException {
+public void PrintCountry(ArrayList<Country> countries){
+    //runs an output to show all countries and continents sorted by population large to small
+    if (countries != null) {
+        for (Country coun : countries) {
+            System.out.println( "--------------------------------------------------------------------------\n" +
+                    "Country Name: "+coun.Name + "\n"+
+                    "Continent: "+ coun.Continent + "\n"+
+                    "Region: "+ coun.Region + "\n"+
+                    "Population: "+ coun.Population +
+                    "\n--------------------------------------------------------------------------"
+            );
+        }
+    } else {
+        System.out.println("No countries found or there was an error.");
+    }
+
+}
+
+    public static void main(String[] args) {
         // Create new Application
         Main a = new Main();
 
         // Connect to database
-        a.connect();
-        TimeUnit.SECONDS.sleep(3);
-        ArrayList<Country> countries = a.getCounCon();  // Now it's a list of countries
-
-        //runs an output to show all countries and continents sorted by population large to small
-        if (countries != null && !countries.isEmpty()) {
-            for (Country coun : countries) {
-                System.out.println( "--------------------------------------------------------------------------\n" +
-                        "Country Name: "+coun.Name + "\n"+
-                                "Continent: "+ coun.Continent + "\n"+
-                                "Region: "+ coun.Region + "\n"+
-                                "Population: "+ coun.Population +
-                        "\n--------------------------------------------------------------------------"
-                );
-            }
+        if (args.length < 1) {
+            a.connect("localhost:33060", 10000);
         } else {
-            System.out.println("No countries found or there was an error.");
+            a.connect(args[0], Integer.parseInt(args[1]));
         }
+        ArrayList<Country> countries = a.getCounCon();  // Now it's a list of countries
+        System.out.println(countries.size());
+
 
         // Disconnect from database
         a.disconnect();
