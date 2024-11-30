@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - countryconlts
 jobs:
   UnitTests:
     name: Unit Tests
