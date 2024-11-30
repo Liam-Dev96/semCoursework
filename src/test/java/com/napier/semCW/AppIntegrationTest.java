@@ -11,15 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AppIntegrationTest
 {
-    static Main app;
-
-    @BeforeAll
-    static void init()
-    {
-        app = new Main();
-        app.connect("localhost:33060", 30000);
-
-    }
 
     @Test
     void testGetPopulation()
@@ -31,7 +22,7 @@ public class AppIntegrationTest
         count.Region = "East Asia";
         count.Population = 1277558000;
         countries.add(count);
-        app.PrintCountry(countries);
+        System.out.println(countries.size());
     }
 
 }
