@@ -19,7 +19,9 @@ public class AppIntegrationTest
         count.Region = "East Asia";
         count.Population = 1277558000;
         countries.add(count);
-        System.out.println(countries.size());
+        for (Country c : countries){
+            System.out.println(c.Name + c.Continent + c.Region+ c.Population);
+        }
     }
 
 }
