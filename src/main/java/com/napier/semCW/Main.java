@@ -1,5 +1,9 @@
 package com.napier.semCW;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -88,20 +92,28 @@ public ArrayList<Country> getCounCon(){
         }
 }
 
-public void PrintCountry(ArrayList<Country> countries){
+public void PrintCountry(ArrayList<Country> countries, String filename){
+
+
+   StringBuilder sb = new StringBuilder();
+
+   sb.append("| Country Name | Continent | Region | Population |");
+   sb.append("| --- | --- | --- | --- |");
     //runs an output to show all countries and continents sorted by population large to small
-    if (countries != null) {
-        for (Country coun : countries) {
-            System.out.println( "--------------------------------------------------------------------------\n" +
-                    "Country Name: "+coun.Name + "\n"+
-                    "Continent: "+ coun.Continent + "\n"+
-                    "Region: "+ coun.Region + "\n"+
-                    "Population: "+ coun.Population +
-                    "\n--------------------------------------------------------------------------"
-            );
-        }
-    } else {
-        System.out.println("No countries found or there was an error.");
+    for (Country coun : countries) {
+        if (coun == null) continue;
+        sb.append("| " + coun.Name + " |" +
+                "| " + coun.Continent + " |" +
+                "| " + coun.Region + " |" +
+                "| " + coun.Population + " |");
+    }
+    try {
+        new File("./reports/").mkdir();
+        BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+        writer.write(sb.toString());
+        writer.close();
+    } catch (IOException e) {
+        e.printStackTrace();
     }
 
 }
@@ -117,7 +129,7 @@ public void PrintCountry(ArrayList<Country> countries){
             a.connect(args[0], Integer.parseInt(args[1]));
         }
         ArrayList<Country> countries = a.getCounCon();  // Now it's a list of countries
-        System.out.println(countries.size());
+        a.PrintCountry(countries, "countries.md");
 
 
         // Disconnect from database
