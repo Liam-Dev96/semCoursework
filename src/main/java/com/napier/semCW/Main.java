@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -109,7 +108,7 @@ public void PrintCountry(ArrayList<Country> countries, String filename){
     }
     try {
         new File("./reports/").mkdir();
-        BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
         writer.write(sb.toString());
         writer.close();
     } catch (IOException e) {
