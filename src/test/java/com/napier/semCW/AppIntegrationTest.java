@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 public class AppIntegrationTest
 {
@@ -12,7 +12,7 @@ public class AppIntegrationTest
     @Test
     void testGetPopulation()
     {
-        ArrayList<Country> countries = new ArrayList<Country>();
+        ArrayList<Country> countries = new ArrayList<>();
         Country count = new Country();
         count.Name = "China";
         count.Continent = "Asia";
