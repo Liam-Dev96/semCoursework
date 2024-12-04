@@ -2,7 +2,7 @@ package com.napier.semCW;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
+
 
 public class Main {
 
@@ -66,14 +66,27 @@ public class Main {
         }
     }
 
-    public Country getCountry(){
+    public Country getCountry(String Code){
        try {
            Statement stmt = con.createStatement();
 
            String strSelect = "SELECT * "
                               +"FROM country";
+           ResultSet rset = stmt.executeQuery(strSelect);
+
+           if (rset.next()){
+               Country country = new Country();
+               country.Name = rset.getString("Name");
+               country.Continent = rset.getString("Continent");
+               country.Region = rset.getString("Region");
+               country.Population = rset.getInt("Population");
+               return country;
+           } else return null;
+
        } catch (SQLException e) {
-           throw new RuntimeException(e);
+           System.out.println(e.getMessage());
+           System.out.println("Failed to get country details");
+           return null;
        }
 
 
