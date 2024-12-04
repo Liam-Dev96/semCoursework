@@ -1,27 +1,30 @@
 package com.napier.semCW;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
 
+public class AppIntegrationTest {
+    static Main app;
 
-
-public class AppIntegrationTest
-{
+    @BeforeAll
+    static void init(){
+        app = new Main();
+        app.connect("localhost:33060", 30000);
+    }
 
     @Test
-    void testGetPopulation()
-    {
-        ArrayList<Country> countries = new ArrayList<>();
-        Country count = new Country();
-        count.Name = "China";
-        count.Continent = "Asia";
-        count.Region = "East Asia";
-        count.Population = 1277558000;
-        countries.add(count);
-        for (Country c : countries){
-            System.out.println(c.Name + c.Continent + c.Region+ c.Population);
-        }
+    void testGetCountry(){
+        Country country = app.getCountry("ABW");
+        assertEquals(country.Code, "ABW");
+        assertEquals(country.Name, "Aruba");
+        assertEquals(country.Region, "Caribbean");
+        assertEquals(country.Continent, "North America");
+        assertEquals(country.Population, 103000);
     }
+
 
 }

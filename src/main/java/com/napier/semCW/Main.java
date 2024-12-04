@@ -1,11 +1,8 @@
 package com.napier.semCW;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -17,7 +14,7 @@ public class Main {
     /**
      * Connect to the MySQL database.
      */
-    public void connect(String location, int delay) {
+    public void connect() {
         try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,28 +23,19 @@ public class Main {
             System.exit(-1);
         }
 
-        int retries = 10;
-        boolean shouldWait = false;
+        int retries = 100;
         for (int i = 0; i < retries; ++i) {
             System.out.println("Connecting to database...");
             try {
-                if (shouldWait) {
-                    // Wait a bit for db to start
-                    Thread.sleep(delay);
-                }
-
+                // Wait a bit for db to start
+                Thread.sleep(6000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://" + location
-                                + "/world?allowPublicKeyRetrieval=true&useSSL=false",
-                        "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
                 System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
-
-                // Let's wait before attempting to reconnect
-                shouldWait = true;
             } catch (InterruptedException ie) {
                 System.out.println("Thread interrupted? Should not happen.");
             }
@@ -69,14 +57,10 @@ public class Main {
         }
     }
 
-    public ArrayList<Country> getCounCon() {
-        if (con == null) {
-            System.out.println("No database connection.");
-            return null;
-        }
+public ArrayList<Country> getCounCon(){
         try {
             Statement countrycon = con.createStatement();
-            String ccltsQuery = "SELECT c.Name, c.Continent, c.Region, c.Population FROM country c order by c.Population DESC";
+            String ccltsQuery = "SELECT Name, Continent, Region, Population FROM country a order by a.Population DESC";
             ResultSet rsetcclts = countrycon.executeQuery(ccltsQuery);
             ArrayList<Country> countries = new ArrayList<>();
             while (rsetcclts.next()) {
@@ -93,51 +77,33 @@ public class Main {
             System.out.println("failed to get country details");
             return null;
         }
-    }
+}
 
-    public void PrintCountry(ArrayList<Country> countries, String filename){
-
-
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("| Country Name | Continent | Region | Population |\r\n");
-        sb.append("| --- | --- | --- | --- |\r\n");
-        //runs an output to show all countries and continents sorted by population large to small
-        for (Country coun : countries) {
-            if (coun == null) continue;
-            sb.append("| " + coun.Name + " |" +
-                    " " + coun.Continent + " |" +
-                    " " + coun.Region + " |" +
-                    " " + coun.Population + " |\r\n");
-        }
-        try {
-            new File("./reports/").mkdir();
-            BufferedWriter writer = new BufferedWriter(new FileWriter("./reports/" + filename));
-            writer.write(sb.toString());
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // Create new Application
-        Main app = new Main();
+        Main a = new Main();
 
         // Connect to database
-        if (args.length < 1) {
-            app.connect("localhost:33060", 10000);
+        a.connect();
+        TimeUnit.SECONDS.sleep(3);
+        ArrayList<Country> countries = a.getCounCon();  // Now it's a list of countries
+
+        if (countries != null && !countries.isEmpty()) {
+            for (Country coun : countries) {
+                System.out.println( "--------------------------------------------------------------------------\n" +
+                        "Country Name: "+coun.Name + "\n"+
+                                "Continent: "+ coun.Continent + "\n"+
+                                "Region: "+ coun.Region + "\n"+
+                                "Population: "+ coun.Population +
+                        "\n--------------------------------------------------------------------------"
+                );
+            }
         } else {
-            app.connect(args[0], Integer.parseInt(args[1]));
+            System.out.println("No countries found or there was an error.");
         }
 
-        ArrayList<Country> countries = app.getCounCon();  // Now it's a list of countries
-        app.PrintCountry(countries, "countries.md");
-
-
         // Disconnect from database
-        app.disconnect();
+        a.disconnect();
 
 
     }
