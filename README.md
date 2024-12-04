@@ -8,6 +8,8 @@
 
 ## Develop Build Status: ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Liam-Dev96/semCoursework/main.yml?branch=develop)
 
+## CodeCov: [![codecov](https://codecov.io/gh/Liam-Dev96/semCoursework/graph/badge.svg?token=JNHCIKLXS1)](https://codecov.io/gh/Liam-Dev96/semCoursework)
+
 ## Code of Conduct:  
 Collaborators will -
 <br/>
