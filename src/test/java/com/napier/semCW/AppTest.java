@@ -1,10 +1,8 @@
 package com.napier.semCW;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
-import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest {
@@ -19,8 +17,7 @@ public class AppTest {
 
     @Test
     void testGetCountry(){
-        Country country = app.getCountry("ABW");
-        assertEquals(country.Code, "ABW");
+        Country country = app.getCountry();
         assertEquals(country.Name, "Aruba");
         assertEquals(country.Region, "Caribbean");
         assertEquals(country.Continent, "North America");

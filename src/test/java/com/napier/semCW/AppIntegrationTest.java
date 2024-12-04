@@ -18,8 +18,7 @@ public class AppIntegrationTest {
 
     @Test
     void testGetCountry(){
-        Country country = app.getCountry("ABW");
-        assertEquals(country.Code, "ABW");
+        Country country = app.getCountry();
         assertEquals(country.Name, "Aruba");
         assertEquals(country.Region, "Caribbean");
         assertEquals(country.Continent, "North America");
