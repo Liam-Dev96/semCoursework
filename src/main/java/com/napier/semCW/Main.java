@@ -114,7 +114,7 @@ public ArrayList<Country> getCounCon(){
         }
 }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
         // Create new Application
         Main a = new Main();
 
