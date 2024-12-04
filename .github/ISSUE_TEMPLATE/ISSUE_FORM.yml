@@ -2,7 +2,12 @@ name: Bug Report
 description: File a bug report.
 title: "[Bug]: "
 labels: ["bug", "triage"]
-
+projects: ["semCoursework"]
+assignees:
+  - Liam-Dev96
+  - harrisonbaer
+  - TEKA2003
+  - 40692325
 body:
   - type: markdown
     attributes:
