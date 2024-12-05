@@ -1,7 +1,6 @@
-version: '3'
+version: '3.8'
 services:
-  app:
-    build: .
+
 
   db:
     build: db/.
@@ -12,3 +11,6 @@ services:
     restart: always
     ports:
       - "33060:3306"
+
+  app:
+    build: .
