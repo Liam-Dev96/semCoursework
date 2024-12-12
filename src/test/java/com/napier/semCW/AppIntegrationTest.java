@@ -1,16 +1,30 @@
 package com.napier.semCW;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.sql.SQLException;
-
+import org.junit.jupiter.api.TestInstance;
+import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppIntegrationTest {
 
-    private Main main;
+public class AppIntegrationTest {
+    static Main app;
+
+    @BeforeAll
+    static void init(){
+        app = new Main();
+        app.connect("localhost:33060", 30000);
+    }
+
+    @Test
+    void testGetCountry(){
+        Country country = app.getCountry();
+        assertEquals(country.Name, "Aruba");
+        assertEquals(country.Region, "Caribbean");
+        assertEquals(country.Continent, "North America");
+        assertEquals(country.Population, 103000);
+    }
 
     @BeforeEach
     void setUp() {

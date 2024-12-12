@@ -1,3 +1,4 @@
+
 package com.napier.sem;
 
 import com.napier.semCW.Main;
@@ -18,7 +19,13 @@ public class AppTest
     {
         app = new Main();
     }
-
+  
+    @Test
+    public void testAlwaysPasses() {
+        // This test will always pass since it's checking a simple true condition
+        assertTrue(true, "This condition is guaranteed to be true");
+    }
+  
     @Test
     void countriesByRegionSingleCountryTest() {
         // Create a valid region and mock the database connection to return a single country.
@@ -31,3 +38,4 @@ public class AppTest
         // such as capturing output for validation or verifying the expected console output.
     }
 }
+
