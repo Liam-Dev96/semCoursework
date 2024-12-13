@@ -35,7 +35,7 @@ Collaborators will -
 |-------|------|------|------------|
 | 1     | All the countries in the world organised by largest population to smallest. | no | image |
 | 2     | All the countries in a continent organised by largest population to smallest. | yes | ![Alt text](img/countrycontinentreport.png)  |
-| 3     | All the countries in a region organised by largest population to smallest. | No | <img width="397" alt="countriesbyregion" src="https://github.com/user-attachments/assets/e5ce0911-fe30-47cf-b38e-276708a82113" /> |
+| 3     | All the countries in a region organised by largest population to smallest. | Yes | <img width="397" alt="countriesbyregion" src="https://github.com/user-attachments/assets/e5ce0911-fe30-47cf-b38e-276708a82113" /> |
 | 4     | The top N populated countries in the world where N is provided by the user. | No | image |
 | 5     | The top N populated countries in a continent where N is provided by the user. | No | image |
 | 6     | The top N populated countries in a region where N is provided by the user. | No | image |
